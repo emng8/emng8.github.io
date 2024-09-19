@@ -4,3 +4,4 @@
 - [Moving Square](movingsquare)
 
 ## Projects
+- [Interactive Scene](interactive-scene)
