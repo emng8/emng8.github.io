@@ -1,4 +1,4 @@
-// Interactive Scenr
+// Interactive Scene
 // Your Name
 // Date
 //
@@ -7,11 +7,15 @@
 
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(1000, 1000);
 }
 
 function draw() {
-  background(220);
+  background(218, 244, 245)
+  drawpaintpalette()
+}
 
-  circle(mouseX, mouseY, 30)
+function drawpaintpalette() {
+  fill(217, 190, 169)
+  circle(250, 500, 300)
 }
