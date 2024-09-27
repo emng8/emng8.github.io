@@ -27,14 +27,17 @@ function switchStateIfNeeded() {
   if (lightState === "green" && millis() > lastTimeSwitched + GREEN_LIGHT_DURATION) {
     lightState = "yellow";
     lastTimeSwitched = millis();
+    console.log(lightState);
   }
   else if (lightState === "yellow" && millis() > lastTimeSwitched + YELLOW_LIGHT_DURATION) {
     lightState = "red";
     lastTimeSwitched = millis();
+    console.log(lightState);
   }
   else if (lightState === "red" && millis() > lastTimeSwitched + RED_LIGHT_DURATION) {
     lightState = "green";
     lastTimeSwitched = millis();
+    console.log(lightState);
   }
 }
 
