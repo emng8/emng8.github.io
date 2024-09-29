@@ -6,7 +6,7 @@
 // 1. keyCode() - I used this function so i could use the system variables UP_ARROW, DOWN_ARROW, LEFT_ARROW, and RIGHT_ARROW. This allowed me to use the key codes of special keys. 
 // 2. rectMode() - I used this to change the x and y coordinates of my paddles to be in the center. This made it easier for me to align the paddles in the center on both sides. 
 // 3. html elements - I used textStyle() and textSize() to customize the text I wanted to display. In doing so, I created an eye catching and engaging game.
-// 5. emojis - I discovered that you can put microsoft emojis into text() to display them. This is a new method I learned to show images. 
+// 5. emojis - I discovered that you can put microsoft emojis into text() to display them. This is a new method I learned to show images.
 
 // ball characteristics
 let ballX;
