@@ -1,6 +1,6 @@
 // Interactive Scene
-// Your Name
-// Date
+// Emily Ng
+// October 1, 2024
 //
 // Extra for Experts:
 // - describe what you did to take this project "above and beyond"
@@ -8,13 +8,14 @@
 // keyTyped()
 // keyCODe() 
 // UP_ARROW DOWN_ARROW
+// changing color of text
 
 // ball characteristics
 let ballX;
 let ballY;
 let ballWidth = 15;
 let ballHeight = 15;
-let ballSpeed = 2;
+let ballSpeed = 2.5;
 let ballDirectionX = -1;
 let ballDirectionY = -1;
 
@@ -31,6 +32,13 @@ let playerWidth = 20;
 let playerHeight = 100;
 let pSpeed = 2;
 
+// scoreboard
+let p1Score = 0;
+let p2Score = 0;
+
+// start screen
+let stage = 0;
+
 function setup() {
   createCanvas(900, 500);
 
@@ -39,10 +47,80 @@ function setup() {
   ballX = width/2;
   ballY = height/2;
 
+  // scoreboard
+  textAlign(CENTER);
 
 } // close setup function
 
 function draw() {
+  // show start screen
+  if (stage === 0) {
+    startScreen();  
+  }
+
+  // show pong game
+  if (stage === 1) {
+    pong();
+  }
+
+  // starting pong game
+  if(mouseIsPressed === true) {
+    stage = 1; 
+  }
+  
+  // screen if player 1 wins
+  if(stage === 2) {
+    p1Wins();
+  }
+
+    // screen if player 2 wins
+    if(stage === 3) {
+      p2Wins();
+    }
+} // close draw function
+
+function startScreen() {
+  background(169, 232, 182);
+
+  fill(252, 88, 146);
+  textSize(80);
+  text('WATERMELON', width/2, 190);
+
+  fill(240, 151, 170);
+  textSize(60);
+  text('PONG GAME', width/2, 270);
+
+  fill(96, 181, 109);
+  textSize(40);
+  text('click to start', width/2, 350);
+} // close startScreen function
+
+function p1Wins() {
+  background(169, 232, 182);
+
+  fill(252, 88, 146);
+  textSize(80);
+  text('PLAYER 1 WINS', width/2, 230);
+
+  fill(240, 151, 170);
+  textSize(60);
+  text('refresh to try again', width/2, 330);
+} // close p1Wins function
+
+function p2Wins() {
+  background(169, 232, 182);
+
+  fill(252, 88, 146);
+  textSize(80);
+  text('PLAYER 2 WINS', width/2, 230);
+
+  fill(240, 151, 170);
+  textSize(60);
+  text('refresh to try again', width/2, 330);
+} // close p2Wins function
+
+
+function pong() {
   // calling functions
   keyTyped(); // looping keyTyped function
   keyPressed(); // looping keyPressed function
@@ -86,8 +164,38 @@ function draw() {
     ballDirectionX = ballDirectionX * (-1); // change direction 
   } 
 
+  // scoreboard
+  textSize(40);
+  text(p1Score, 400, 50);
+  text(p2Score, 500, 50);
 
-} // close draw function
+  // ball touches back wall, player 1 missed
+  if (ballX <= 0) { 
+    p2Score = p2Score + 1; // add point for player 2
+    // ball goes back to the center
+    ballX = width/2;
+    ballY = height/2;
+  }
+
+  // ball touches back wall, player 2 missed
+  if (ballX >= width) { 
+    p1Score = p1Score + 1; // add point for player 1
+    // ball goes back to the center
+    ballX = width/2;
+    ballY = height/2;
+  }
+
+  // show screen if player 1 wins
+  if(p1Score >= 10) {
+    stage = 2;
+  }
+
+  // show screen if player 2 wins
+  if(p2Score >= 10) {
+    stage = 3;
+  }
+
+} // close pong function
 
 function keyTyped(){
   if (key === 'w' && keyIsPressed) {
@@ -106,5 +214,4 @@ function keyPressed() {
   if(keyCode === DOWN_ARROW && keyIsPressed) {
     p2Y = p2Y + pSpeed;
   }
-
    } // close keyPressed Function
