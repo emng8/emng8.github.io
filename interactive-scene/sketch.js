@@ -1,14 +1,12 @@
-// Interactive Scene
+// Interactive Scene - Watermelon Pong Game
 // Emily Ng
 // October 1, 2024
 //
 // Extra for Experts:
-// - describe what you did to take this project "above and beyond"
-// rectMode() changes the origin of the rectangle to be the center
-// keyTyped()
-// keyCODe() 
-// UP_ARROW DOWN_ARROW
-// changing color of text
+// 1. keyCode() - I used this function so i could use the system variables UP_ARROW, DOWN_ARROW, LEFT_ARROW, and RIGHT_ARROW. This allowed me to use the key codes of special keys. 
+// 2. rectMode() - I used this to change the x and y coordinates of my paddles to be in the center. This made it easier for me to align the paddles in the center on both sides. 
+// 3. html elements - I used textStyle() and textSize() to customize the text I wanted to display. In doing so, I created an eye catching and engaging game.
+// 5. emojis - I discovered that you can put microsoft emojis into text() to display them. This is a new method I learned to show images. 
 
 // ball characteristics
 let ballX;
@@ -69,37 +67,50 @@ function gameStage() {
   }
 
   // starting pong game
-  if(mouseIsPressed === true) {
+  if (mouseIsPressed === true) {
     stage = 1; 
   }
 } // close gameStage function
 
 function displayWinner() {
   // screen if player 1 wins
-  if(stage === 2) {
+  if (stage === 2) {
     p1Wins();
   }
 
   // screen if player 2 wins
-    if(stage === 3) {
-      p2Wins();
-    }
+  if (stage === 3) {
+    p2Wins();
+  }
 } // close displayWinner function
 
 function startScreen() {
   background(169, 232, 182);
+  textSize(140)
+  text('🍉', 100, 450)
+  text('🍉', 800, 150)  
+  text('🏓', 100, 150)
+  text('🏓', 800, 450)
 
   fill(252, 88, 146);
   textSize(80);
-  text('WATERMELON', width/2, 190);
+  textStyle(BOLD);
+  text('WATERMELON', width/2, 210);
 
   fill(240, 151, 170);
   textSize(60);
-  text('PONG GAME', width/2, 270);
+  textStyle(BOLD);
+  text('PONG GAME', width/2, 280);
 
   fill(96, 181, 109);
   textSize(40);
-  text('click to start', width/2, 350);
+  textStyle(BOLD);
+  text('CLICK TO START GAME', width/2, 370);
+
+  fill(96, 181, 109);
+  textSize(20);
+  textStyle(NORMAL);
+  text('(USE WASD AND ARROW KEYS TO PLAY)', width/2, 400);
 } // close startScreen function
 
 function p1Wins() {
@@ -107,11 +118,13 @@ function p1Wins() {
 
   fill(252, 88, 146);
   textSize(80);
+  textStyle(BOLD);
   text('PLAYER 1 WINS', width/2, 230);
 
   fill(240, 151, 170);
   textSize(60);
-  text('refresh to try again', width/2, 330);
+  textStyle(BOLD);
+  text('REFRESH TO TRY AGAIN', width/2, 330);
 } // close p1Wins function
 
 function p2Wins() {
@@ -119,11 +132,13 @@ function p2Wins() {
 
   fill(252, 88, 146);
   textSize(80);
+  textStyle(BOLD);
   text('PLAYER 2 WINS', width/2, 230);
 
   fill(240, 151, 170);
   textSize(60);
-  text('refresh to try again', width/2, 330);
+  textStyle(BOLD);
+  text('REFRESH TO TRY AGAIN', width/2, 330);
 } // close p2Wins function
 
 function pong() {
