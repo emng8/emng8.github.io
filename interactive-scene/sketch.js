@@ -17,15 +17,11 @@ let ballSpeed = 2.5;
 let ballDirectionX = -1;
 let ballDirectionY = -1;
 
-// player 1 paddle
+// player 1 and player 2 paddle characteristics
 let p1X = 10;
 let p1Y = 250;
-
-// player 2 paddle
 let p2X = 890;
 let p2Y = 250;
-
-// paddle characteristics
 let playerWidth = 20;
 let playerHeight = 100;
 let pSpeed = 2;
@@ -47,13 +43,13 @@ function setup() {
 
   // scoreboard
   textAlign(CENTER);
-
-} // close setup function
+}
 
 function draw() {
+  // calling functions to play the game
   gameStage();
   displayWinner();
-} // close draw function
+}
 
 function gameStage() {
   // show start screen
@@ -70,21 +66,22 @@ function gameStage() {
   if (mouseIsPressed === true) {
     stage = 1; 
   }
-} // close gameStage function
+}
 
 function displayWinner() {
-  // screen if player 1 wins
+  // show screen if player 1 wins
   if (stage === 2) {
     p1Wins();
   }
 
-  // screen if player 2 wins
+  // show screen if player 2 wins
   if (stage === 3) {
     p2Wins();
   }
-} // close displayWinner function
+}
 
 function startScreen() {
+  // start screen text, pictures, and instructions
   background(169, 232, 182);
   textSize(140)
   text('🍉', 100, 450)
@@ -111,9 +108,10 @@ function startScreen() {
   textSize(20);
   textStyle(NORMAL);
   text('(USE WASD AND ARROW KEYS TO PLAY)', width/2, 400);
-} // close startScreen function
+}
 
 function p1Wins() {
+  // screen if player 1 wins
   background(169, 232, 182);
 
   fill(252, 88, 146);
@@ -125,9 +123,10 @@ function p1Wins() {
   textSize(60);
   textStyle(BOLD);
   text('REFRESH TO TRY AGAIN', width/2, 330);
-} // close p1Wins function
+}
 
 function p2Wins() {
+  // screen if player 2 wins
   background(169, 232, 182);
 
   fill(252, 88, 146);
@@ -139,7 +138,7 @@ function p2Wins() {
   textSize(60);
   textStyle(BOLD);
   text('REFRESH TO TRY AGAIN', width/2, 330);
-} // close p2Wins function
+}
 
 function pong() {
   // make wasd and arrow keys work
@@ -164,8 +163,8 @@ function pong() {
   rect(p2X, p2Y, playerWidth, playerHeight);
 
   // making ball move
-  ballX = ballX + (ballDirectionX * ballSpeed); 
-  ballY = ballY + (ballDirectionY * ballSpeed); 
+  ballX += (ballDirectionX * ballSpeed); 
+  ballY += (ballDirectionY * ballSpeed); 
 
   // collision with walls
   // if ball hits bottom wall, change direction
@@ -195,13 +194,13 @@ function pong() {
   // scoring points
   // if player 1 misses, add point for player 2 and reset the ball
   if (ballX <= 0) { 
-    p2Score = p2Score + 1; 
+    p2Score += 1; 
     ballX = width/2;
     ballY = height/2;
   }
   // if player 2 misses, add point for player 1 and reset the ball
   if (ballX >= width) { 
-    p1Score = p1Score + 1; 
+    p1Score += 1; 
     ballX = width/2;
     ballY = height/2;
   }
@@ -215,23 +214,25 @@ function pong() {
   if (p2Score >= 10) {
     stage = 3;
   }
-} // close pong function
+}
 
 function keyTyped(){
+  // controls for player 1
   if (key === 'w' && keyIsPressed) {
-    p1Y = p1Y - pSpeed;
+    p1Y -= pSpeed;
   }
   if (key === 's' && keyIsPressed) {
-    p1Y = p1Y + pSpeed;
+    p1Y += pSpeed;
   }
-} // close keyTyped function
+}
 
 function keyPressed() {
+  // controls for player 2
   if (keyCode === UP_ARROW && keyIsPressed){
-    p2Y = p2Y - pSpeed;
+    p2Y -= pSpeed;
   }
 
   if (keyCode === DOWN_ARROW && keyIsPressed) {
-    p2Y = p2Y + pSpeed;
+    p2Y += pSpeed;
   }
-   } // close keyPressed Function
+   }
