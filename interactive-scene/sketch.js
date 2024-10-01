@@ -102,12 +102,17 @@ function startScreen() {
   fill(96, 181, 109);
   textSize(40);
   textStyle(BOLD);
-  text('CLICK TO START GAME', width/2, 370);
+  text('CLICK TO START GAME', width/2, 365);
 
   fill(96, 181, 109);
-  textSize(20);
+  textSize(17);
   textStyle(NORMAL);
-  text('(USE WASD AND ARROW KEYS TO PLAY)', width/2, 400);
+  text('(PLAYER 1: USE W AND S KEYS TO PLAY)', width/2, 395);
+
+  fill(96, 181, 109);
+  textSize(17);
+  textStyle(NORMAL);
+  text('(PLAYER 2: USE UP ARROW AND DOWN ARROW KEYS TO PLAY)', width/2, 420);
 }
 
 function p1Wins() {
