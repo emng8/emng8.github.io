@@ -27,4 +27,12 @@ function draw() {
   let y = sin(frameCount) * 100;
 
   ellipse(x, y, 20, 20);
+
+   // trying to make multiple and then make it 3D
+  translate(100, 100);
+
+  let x = cos(frameCount) * 100;
+  let y = sin(frameCount) * 100;
+
+  ellipse(x, y, 20, 20);
 }
