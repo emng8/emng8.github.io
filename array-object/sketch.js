@@ -16,23 +16,35 @@
 //   background(220);
 // }
 
+let x;
+let y; 
+
 function setup() {
   createCanvas(400, 400);
 }
 
 function draw() {
   translate(200, 200);
+}
 
+function drawCircles() {
   let x = cos(frameCount) * 100;
   let y = sin(frameCount) * 100;
 
   ellipse(x, y, 20, 20);
+}
 
-   // trying to make multiple and then make it 3D
-  translate(100, 100);
+// trying to make the illusion everywhere 
+function multipleCircles(x, y) {
+  let theRect = {
+    // moving to new position 
+    newX: x + 100
+    newY: y + 100
+  }; 
 
-  let x = cos(frameCount) * 100;
-  let y = sin(frameCount) * 100;
-
-  ellipse(x, y, 20, 20);
+  // think I have to use this loop to make multiple. with the list. 
+  // for (circle in figure) {
+  // duplicate(drawCircles) ? 
+  // basically move position and duplicate everything.
+  //}
 }
