@@ -38,13 +38,18 @@ function drawCircles() {
 function multipleCircles(x, y) {
   let theRect = {
     // moving to new position 
-    newX: x + 100
-    newY: y + 100
+    newX: x + 100,
+    newY: y + 100,
   }; 
+}
 
-  // think I have to use this loop to make multiple. with the list. 
-  // for (circle in figure) {
-  // duplicate(drawCircles) ? 
-  // basically move position and duplicate everything.
-  //}
+// think I have to use this loop to make multiple. with the list. 
+
+function duplicate(vertical, horizontal) {
+  for (figure in drawing) {
+    let theDrawing = {
+      vertical: vertical + 200,
+      horizontal: horizontal + 200, 
+    };
+  }
 }
