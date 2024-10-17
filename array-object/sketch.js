@@ -25,6 +25,13 @@ function setup() {
 
 function draw() {
   translate(200, 200);
+
+  // fix this 
+  circle(100, 100, 100);
+  circle(200, 200, 50);
+  circle(100, 350, 200);
+  rect(100, 100, 100, 200);
+  rect(300, 300, 100, 200);
 }
 
 function drawCircles() {
