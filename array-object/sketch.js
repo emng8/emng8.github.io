@@ -16,47 +16,69 @@
 //   background(220);
 // }
 
-let x;
-let y; 
+// let x;
+// let y; 
+
+let x = 0;
+let speed = 3;
 
 function setup() {
   createCanvas(400, 400);
+  background(0);
 }
 
 function draw() {
-  translate(200, 200);
-
-  // fix this 
-  circle(100, 100, 100);
-  circle(200, 200, 50);
-  circle(100, 350, 200);
-  rect(100, 100, 100, 200);
-  rect(300, 300, 100, 200);
+  movingBall();
 }
 
-function drawCircles() {
-  let x = cos(frameCount) * 100;
-  let y = sin(frameCount) * 100;
-
-  ellipse(x, y, 20, 20);
+function movingBall() {
+  x = x + speed; 
+	 if (x > width) {
+    speed *= -1;
+  }
+  if (x === 0) {
+    speed *= -1 ;
+  }
+  ellipse(x, 0, 20, 20);
+  ellipse(x, 30, 20, 20);
+  ellipse(x, 60, 20, 20);
+  ellipse(x, 90, 20, 20);
+  ellipse(x, 120, 20, 20);
+  ellipse(x, 150, 20, 20);
+  ellipse(x, 180, 20, 20);
+  ellipse(x, 210, 20, 20);
+  ellipse(x, 240, 20, 20);
+  ellipse(x, 270, 20, 20);
+  ellipse(x, 300, 20, 20);
+  ellipse(x, 330, 20, 20);
+  ellipse(x, 360, 20, 20);
+  ellipse(x, 390, 20, 20);
 }
+
+
+// function drawCircles() {
+//   let x = cos(frameCount) * 100;
+//   let y = sin(frameCount) * 100;
+
+//   ellipse(x, y, 20, 20);
+// }
 
 // trying to make the illusion everywhere 
-function multipleCircles(x, y) {
-  let theRect = {
-    // moving to new position 
-    newX: x + 100,
-    newY: y + 100,
-  }; 
-}
+// function multipleCircles(x, y) {
+//   let theRect = {
+//     // moving to new position 
+//     newX: x + 100,
+//     newY: y + 100,
+//   }; 
+// }
 
 // think I have to use this loop to make multiple. with the list. 
 
-function duplicate(vertical, horizontal) {
-  for (figure in drawing) {
-    let theDrawing = {
-      vertical: vertical + 200,
-      horizontal: horizontal + 200, 
-    };
-  }
-}
+// function duplicate(vertical, horizontal) {
+//   for (figure in drawing) {
+//     let theDrawing = {
+//       vertical: vertical + 200,
+//       horizontal: horizontal + 200, 
+//     };
+//   }
+// }
