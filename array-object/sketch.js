@@ -11,7 +11,7 @@
 function setup() {
   const size = min(windowWidth, windowHeight);
   createCanvas(size, size);
-  colorMode(RGB, 1);
+  colorMode(HSL, 1);
   noStroke();
 }
 
@@ -54,10 +54,11 @@ function createDots(t) {
       const x = 0.5 + cos(angle * TWO_PI) * dist;
       const y = 0.5 + sin(angle * TWO_PI) * dist;
 
+      const sig = pow(cosn(f - t * 6), 2);
       const r = f * 0.05; // Radius based on the fraction
       const hue = fract(t + f * 0.5);
       const sat = 1;
-      const light = 0.6; 
+      const light = 0.6 * sig + 0.25; 
 
       const dot = {
           x: x,
