@@ -1,12 +1,16 @@
-// Project Title
-// Your Name
-// Date
+// Golden Ratio Spiral with Circles
+// Emily Ng
+// October 21, 2024
 //
 // Extra for Experts:
-// - describe what you did to take this project "above and beyond"
-
-// Project Idea: make some sort of optical illusion or repetition art. probably the square optical illusion or trinangle pattern. 
-// might make it 3D so it shows it from all angles using 3D rendering. 
+// 1. const size = min(windowWidth, windowHeight) - I learned that I can calculate the shortest
+// length of either the width or the height to ensure that the canvas is square.
+// 2. ColorMode(HSL, 1) - I learned that for my project, I can HSL to change colors based off of hue,
+// saturation, and lightness. Using HSL instead of RGB made the art more colorful. It also provides smooth 
+// color transitions. 
+// 3. cos() and sin() - I used it to draw the circles/spiral. The angle determines the angle of the rotation and the 
+// radius represents how far away it is from the origin of the vector. This makes up something called polar coordinates.
+// 
 
 function setup() {
   const size = min(windowWidth, windowHeight);
@@ -50,7 +54,7 @@ function createDots(t) {
       const angle = i * PHI; 
       const dist = f * radius;
       
-      
+      // makes it a spiral insteas of a circle
       const x = 0.5 + cos(angle * TWO_PI) * dist;
       const y = 0.5 + sin(angle * TWO_PI) * dist;
 
