@@ -12,6 +12,7 @@
 // radius represents how far away it is from the origin of the vector. This makes up something called polar coordinates.
 // 4. const - I used this to define a constant. After I declared it as a constant, it can not be reassigned. I had
 // to use this instead of let because if I used let, it would change everytime. 
+// 5. 
 
 function setup() {
   const size = min(windowWidth, windowHeight);
