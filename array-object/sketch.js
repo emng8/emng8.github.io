@@ -7,7 +7,7 @@
 // 2. ColorMode(HSL, 1) - I learned that for my project, I can HSL to change colors based off of hue, saturation, and lightness. Using HSL instead of RGB made the art more colorful. It also provides smooth color transitions. 
 // 3. cos() and sin() - I used it to draw the circles/spiral. The angle determines the angle of the rotation and the radius represents how far away it is from the origin of the vector. This makes up something called polar coordinates.
 // 4. const - I used this to define a constant. After I declared it as a constant, it can not be reassigned. I had to use this instead of let because if I used let, it would change everytime. 
-// 5. FrameCount() - I used this to track the number of frames drawn since the sketch started. This was used to create the animation with a loop.
+// 5. FrameCount() - I used this to track the number of frames drawn since the sketch started.I used this to create the animation with a loop.
 // 6. TWO_PI - I used this to convert angles from a normalized range (0 to 1) to radians. It essentially helps to create the spiral pattern.
 // 7. PHI - I used this to make the angle increase by the value of the golden ratio after each iteration. This distributes the circles for a balanced look while making the spiral pattern. 
 
@@ -38,12 +38,12 @@ function draw() {
   renderCircles(dots); 
 }
 
-// makes a normalized cosine function between 0 and 1 to create a full cosine wave.
+// makes a normalized cosine function between 0 and 1 based on the cosine function to create a full cosine wave.
 function normCos(value) {
   return cos(value * TWO_PI) * 0.5 + 0.5;
 }
 
-// returns the inverse of the normCos. As normCos() goes from 0 to 1, invertnormCos() goes from 1 to 0.
+// returns the inverse of the normCos. As normCos(value) goes from 0 to 1, invertnormCos(value) goes from 1 to 0.
 function invertnormCos(value) {
   return 1 - normCos(value);
 }
@@ -57,10 +57,8 @@ function createDots(t) {
 
   // makes multiple circles in a spiral shape
   for (let i = 1; i < circleNumber; i++) {
-
     // number of circles that appear on either side of drawing
     const fraction = i / circleNumber; 
-
     // makes it so that there are multiple lines leading to the spirals
     const angle = i * PHI; 
 
