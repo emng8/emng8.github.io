@@ -22,53 +22,51 @@ function setup() {
   noStroke();
 }
 
-// these two functions make it so that the drawing gets bigger and then smaller
-// normalized cos so that we can us a value from 0-1
-function normCos(v) {
-  return cos(v * TWO_PI) * 0.5 + 0.5;
-}
-// makes it go from 0 to 1 and back to 0. makes a curve to animate things with
-function invertnormCos(v) {
-  return 1 - normCos(v);
+// Makes a normalized cosine function between 0 and 1 based on the cosine function to create a full cosine wave.
+function normCos(value) {
+  return cos(value * TWO_PI) * 0.5 + 0.5;
 }
 
-const shapeRadius = Math.sqrt(0.5); // makes it so that the entire shape covers the whole screen
-const dotSize = 0.1;
-const PHI = (1 + Math.sqrt(5)) / 2; // the most irrational number
-const frames = 1000;
+// Returns the inverse of the normCos. As normCos(value) goes from 0 to 1, invertnormCos(value) goes from 1 to 0, creating a smooth animation effect.
+function invertnormCos(value) {
+  return 1 - normCos(value);
+}
+
+const shapeRadius = Math.sqrt(0.5); // calculates the radius all the dots of the entire shape covers the whole canvas
+const dotSize = 0.1; // starting size of the dots that will be drawn
+const PHI = (1 + Math.sqrt(5)) / 2; // calculates the golden ratio
+const frames = 1000; // number of frames used for animation purposes
 
 function draw() {
   scale(width, height);
   background(0);
-  fill(1);
 
-  const time = fract(frameCount / 1000); // makes it so that the sketch loops 
-  const dots = createDots(time);
+  const time = fract(frameCount / 1000); // makes the animation of the drawing loops 
+  const dots = createDots(time); 
   renderDots(dots); // draw the dots
-
 }
 
 function createDots(t) {
-  const circleNumber = 2000 * invertnormCos(t); 
-  const dots = []; // Array to hold dot objects
+  const circleNumber = 2000 * invertnormCos(t);  // the number of circles to make 
+  const dots = []; // Array to hold dots
 
   // makes multiple circles in a spiral shape
   for (let i = 1; i < circleNumber; i++) {
-      const fraction = i / circleNumber;
-      const angle = i * PHI; 
-      // makes the multiple circles be in a spiral shape
-      const distance = fraction * shapeRadius;
-      const x = 0.5 + cos(angle * TWO_PI) * distance; // multiplied by TWO_PI so a full cycle is 1
-      const y = 0.5 + sin(angle * TWO_PI) * distance;
+      const fraction = i / circleNumber; // number of circles that appear on either side
+      const angle = i * PHI; // makes it so that there are multiple spirals
+      // makes the multiple circles be in a semi-spiral shape
+      const distance = fraction * shapeRadius; // calculates the distance from the center for each dot, scaling it by fraction to ensure dots spread out until the shapeRadius as i increases.
+      const x = 0.5 + cos(angle * TWO_PI) * distance; // makes the x be 
+      const y = 0.5 + sin(angle * TWO_PI) * distance; // makes the y be in a spiral
 
       // animates the circles size 
-      const sig = pow(normCos(fraction - t * 6), 2);
-      const circleRadius = fraction * 0.05; // makes it so that there ar eless circles on the inside than outside
+      const signal = pow(normCos(fraction - t * 6), 2); // adds the pulsing effect while influencing the z=size of the circles
+      const circleRadius = fraction * 0.05; // makes less circles on the inside than outside
       
       // changes the color of the drawing 
       const hue = t + fraction * 0.5; // changes the color over time
       const sat = 1;
-      const light = 0.6 * sig + 0.25; // animates the lightness using sig
+      const light = 0.6 * signal + 0.25; // animates the lightness using sig
 
       const dot = {
           x: x,
@@ -89,4 +87,3 @@ function renderDots(dots) {
       circle(dot.x, dot.y, dot.radius);
   });
 }
-
