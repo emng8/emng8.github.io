@@ -85,23 +85,23 @@ function createDots(t) {
 
     // stores information for each individual circle 
     const dot = {
-        x: x,
-        y: y,
-        radius: circleRadius,
-        color: color(hue, sat, light)
+      x: x,
+      y: y,
+      radius: circleRadius,
+      color: color(hue, sat, light)
     };
 
     // puts each individual circle into the circles array
     dots.push(dot); 
   }
 
-return dots; 
+  return dots; 
 }
 
 // displays and creates animation for each circle in the circles array 
 function renderDots(dots) {
   dots.forEach(dot => {
-      fill(dot.color);
-      circle(dot.x, dot.y, dot.radius);
-  });
+    fill(dot.color);
+    circle(dot.x, dot.y, dot.radius);
+  })
 }
