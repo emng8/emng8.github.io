@@ -89,3 +89,4 @@ function renderDots(dots) {
       circle(dot.x, dot.y, dot.radius);
   });
 }
+
