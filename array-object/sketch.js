@@ -52,7 +52,6 @@ function createDots(t) {
   const circleNumber = 2000 * invertnormCos(t); 
   const dots = []; // Array to hold dot objects
 
-
   // makes multiple circles in a spiral shape
   for (let i = 1; i < circleNumber; i++) {
       const fraction = i / circleNumber;
