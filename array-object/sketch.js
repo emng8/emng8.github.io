@@ -21,9 +21,6 @@ const PHI = (1 + Math.sqrt(5)) / 2;
 
 // calculates the radius so all the circles in the entire shape covers the whole canvas
 const shapeRadius = Math.sqrt(0.5); 
-const dotSize = 0.1; // starting size of the dots that will be drawn
-
-const frames = 1000; // number of frames used for animation purposes
 
 function setup() {
   // makes canvas the biggest square possible
