@@ -103,5 +103,5 @@ function renderDots(dots) {
   dots.forEach(dot => {
     fill(dot.color);
     circle(dot.x, dot.y, dot.radius);
-  })
+  });
 }
