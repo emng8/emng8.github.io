@@ -1,5 +1,5 @@
-// Grid Demo
-// October 22, 2024
+// Game of Life Demo
+// October 25, 2024
 
 // if hardcoding the grid, use something like this:
 // let grid = [[1, 0, 1, 0],
@@ -8,9 +8,16 @@
 //             [0, 1, 1, 0]];
 
 let grid;
-const GRID_SIZE = 10;
+const GRID_SIZE = 40;
 let cellSize;
 let shouldToggleNeighbours = false;
+let autoPlayIsOn = false;
+let renderOnFrameMultiple = 5;
+let gosperGun;
+
+function preload() {
+  gosperGun = loadJSON("gosper.json");
+}
 
 function setup() {
   if (windowWidth < windowHeight) {
@@ -35,6 +42,9 @@ function windowResized() {
 
 function draw() {
   background(220);
+  if (autoPlayIsOn && frameCount % renderOnFrameMultiple === 0) {
+    grid = updateGrid();
+  }
   displayGrid();
 }
 
@@ -42,10 +52,10 @@ function mousePressed() {
   let x = Math.floor(mouseX/cellSize);
   let y = Math.floor(mouseY/cellSize);
 
-  // toggle self
+  //toggle self
   toggleCell(x, y);
 
-  // toggle neighbours 
+  //toggle neighbours
   if (shouldToggleNeighbours) {
     toggleCell(x + 1, y);
     toggleCell(x - 1, y);
@@ -55,7 +65,7 @@ function mousePressed() {
 }
 
 function toggleCell(x, y) {
-  // make sure the cell you're toggling is in the grid
+  //make sure the cell you're toggling is in the grid
   if (x >= 0 && y >= 0 && x < GRID_SIZE && y < GRID_SIZE) {
     if (grid[y][x] === 1) {
       grid[y][x] = 0;
@@ -79,45 +89,55 @@ function keyPressed() {
   if (key === " ") {
     grid = updateGrid();
   }
+  if (key === "a") {
+    autoPlayIsOn = !autoPlayIsOn;
+  }
+  if (key === "g") {
+    grid = gosperGun;
+  }
 }
 
 function updateGrid() {
-  // make a new array to hold the next turn
+  //make a new array to hold the next turn
   let nextTurn = generateEmptyGrid(GRID_SIZE, GRID_SIZE);
 
-  // look at every cell
-  for (let y = 0; y < GRID_SIZE; x++) {
-    // count its neighbours
-    let neighbours = 0;
+  //look at every cell
+  for (let y = 0; y < GRID_SIZE; y++) {
+    for (let x = 0; x < GRID_SIZE; x++) {
+      //count it's neighbours
+      let neighbours = 0;
 
-    for (let i = -1; i <= 1; i ++) {
-      for (let j = -1; j <= 1; j++) {
-        // don't fall off the edge
-        if (y+i >= 0 && y+i < GRID_SIZE && x+j >= 0 && x+j <= GRID_SIZE) {
-          neighbours += grid[y+i][x + j];
+      for (let i = -1; i <= 1; i++) {
+        for (let j = -1; j <= 1; j++) {
+          //don't fall of the edge
+          if (y+i >= 0 && y+i < GRID_SIZE && x+j >= 0 && x+j < GRID_SIZE) {
+            neighbours += grid[y+i][x+j];
+          }
         }
       }
-    }
-    // don't count yourself
-    neighbours -= grid[y][x];
 
-    // apply the rules
-    if(grid[y][x] === 0) {
-      // currently dead
-      if (neighbours === 3) {
-        nextTurn[y][x] = 1;
+      //don't count yourself
+      neighbours -= grid[y][x];
+
+      //apply the rules 
+      if (grid[y][x] === 0) {
+        //currently dead
+        if (neighbours === 3) {
+          nextTurn[y][x] = 1;
+        }
+        else {
+          nextTurn[y][x] = 0;
+        }
       }
-      else {
-        nextTurn[y][x] = 0; 
-      }
-    }
-    if (grid[y][x] === 1) {
-      // currently alive
-      if (neighbours === 2 || neighbours === 3) {
-        nextTurn[y][x] = 1;
-      }
-      else {
-        nextTurn[y][x] = 0;
+
+      if (grid[y][x] === 1) {
+        //currently alive
+        if (neighbours === 2 || neighbours === 3) {
+          nextTurn[y][x] = 1;
+        }
+        else {
+          nextTurn[y][x] = 0;
+        }
       }
     }
   }
