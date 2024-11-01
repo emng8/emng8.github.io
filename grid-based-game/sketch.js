@@ -14,7 +14,7 @@ let dirtIMG;
 function preload() {
   grassIMG = loadImage("grass.png");
   dirtIMG = loadImage("dirt.png");
-  flowerIMG = loadImage("");
+  flowerIMG = loadImage("flowers.png");
 }
 
 function setup() {
