@@ -14,6 +14,8 @@ let dirtIMG;
 let flowerIMG;
 let beeIMG; 
 let beehiveIMG;
+const MUD_TILE = 0; // character can't go on the mud
+const GRASS_TILE = 1; // character can go on the grass
 
 function preload() {
   grassIMG = loadImage("grass.png");
@@ -36,12 +38,37 @@ function setup() {
 
 function draw() {
   background(220);
+  displayGrid();
 }
 
-function displayGrid() {
+function keyPressed() {
+  // move up
+  if (key === "w") {
+
+  }
+  // move left 
+  if (key === "a") {
+
+  }
+  // move down
+  if (key === "s") {
+
+  }
+  // move right
+  if (key === "d") {
+
+  }
+}
+
+function displayGrid() { // * figure out how to actually display the grid
   for (let y = 0; y < GRID_SIZE; y++) {
     for (let x = 0; x < GRID_SIZE; x++) {
-      square(x * cellSize, y * cellSize, cellSize);
+      if (grid[y][x] === MUD_TILE) {
+        image(grassImg, x*cellSize, y*cellSize, cellSize, cellSize);
+      }
+      else if (grid[y][x] === GRASS_TILE) {
+        image(pathImg, x*cellSize, y*cellSize, cellSize, cellSize);
+      }
     }
   }
 }
