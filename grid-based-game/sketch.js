@@ -6,7 +6,14 @@
 // - describe what you did to take this project "above and beyond"
 // making a game where the bee has to go polinate all the flowers and then has to find its way back to the beehive
 
-let grid;
+// make 0 be the open tile/grass tile and 1 to be the closed tile/mud tile
+let grid = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]];
+
 const GRID_SIZE = 50;
 const cellSize = 5;
 let grassIMG;
