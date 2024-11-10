@@ -81,6 +81,16 @@ function displayGrid() {
     }
   }
 
+  // // adding flowers on the tiles
+  // for (let y = 0; y < GRID_ROWS; y++) {
+  //    for (let x = 0; x < GRID_COLS; x++) {
+  //      // Place flowers randomly on top of some grass tiles
+  //      if (grid[y][x] === GRASS_TILE && random() > 0.8) {  // 20% chance to place a flower
+  //        image(flowerIMG, x * cellSize, y * cellSize, cellSize, cellSize);
+  //      }
+  //    }
+  //  }
+
   // displaying the beehive on top of grass tile
   for (let y = 0; y < GRID_ROWS; y++) {
     for (let x = 0; x < GRID_COLUMNS; x++) {
@@ -90,8 +100,8 @@ function displayGrid() {
     }
   }
 
-
 }
+
 function displayPlayer() {
   image(beeIMG, player.x * cellSize, player.y * cellSize, cellSize, cellSize); 
 }
