@@ -6,8 +6,7 @@
 // // - describe what you did to take this project "above and beyond"
 // // making a game where the bee has to go polinate all the flowers and then has to find its way back to the beehive
 
-// make 0 be the open tile/grass tile and 1 to be the closed tile/mud tile
-
+// setting up grid for game
 let grid = [
   [0, 0, 1, 1, 0, 0, 0, 0, 1, 1], 
   [1, 0, 0, 1, 0, 1, 0, 1, 0, 1], 
@@ -22,7 +21,7 @@ let grid = [
 ];
 
 const GRID_ROWS = grid.length;
-const GRID_COLS = grid[0].length; 
+const GRID_COLUMNS = grid[0].length; 
 const cellSize = 50;
 let grassIMG, dirtIMG, flowerIMG, beeIMG, beehiveIMG;
 const DIRT_TILE = 1; // mud tile (blocked tile)
@@ -65,7 +64,7 @@ function keyPressed() {
     player.y++;
   }
   // Move right
-  if (key === "d" && player.x < GRID_COLS - 1 && grid[player.y][player.x + 1] !== DIRT_TILE) {
+  if (key === "d" && player.x < GRID_COLUMNS - 1 && grid[player.y][player.x + 1] !== DIRT_TILE) {
     player.x++;
   }
 }
@@ -73,89 +72,26 @@ function keyPressed() {
 function displayGrid() {
   // Loop through the grid and display tiles
   for (let y = 0; y < GRID_ROWS; y++) {
-    for (let x = 0; x < GRID_COLS; x++) {
+    for (let x = 0; x < GRID_COLUMNS; x++) {
       if (grid[y][x] === DIRT_TILE) {
         image(dirtIMG, x * cellSize, y * cellSize, cellSize, cellSize);  // DIRT_TILE is 1
       } else if (grid[y][x] === GRASS_TILE) {
         image(grassIMG, x * cellSize, y * cellSize, cellSize, cellSize);  // GRASS_TILE is 0
-      } else if (grid[y][x] === BEEHIVE_TILE) {
+      } 
+    }
+  }
+
+  // displaying the beehive on top of grass tile
+  for (let y = 0; y < GRID_ROWS; y++) {
+    for (let x = 0; x < GRID_COLUMNS; x++) {
+      if (grid[y][x] === BEEHIVE_TILE) {
         image(beehiveIMG, x * cellSize, y * cellSize, cellSize, cellSize);  // BEEHIVE_TILE is 2
       }
     }
   }
-}
 
+
+}
 function displayPlayer() {
   image(beeIMG, player.x * cellSize, player.y * cellSize, cellSize, cellSize); 
 }
-
-// // make 0 be the open tile/grass tile and 1 to be the closed tile/mud tile
-// // let grid = [[0, 0, 1, 0, 0, 0, 0, 0, 0, 0], 
-//   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
-//   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-//   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
-//   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
-//   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]];
-
-// const GRID_SIZE = 50;
-// const cellSize = 5;
-// let grassIMG;
-// let dirtIMG;
-// let flowerIMG;
-// let beeIMG; 
-// let beehiveIMG;
-// const DIRT_TILE = 0; // character can't go on the mud
-// const GRASS_TILE = 1; // character can go on the grass
-// let player = {
-//   x: 0,
-//   y: 0,
-// };
-
-// function preload() {
-//   grassIMG = loadImage("grass.png");
-//   dirtIMG = loadImage("dirt.png");
-//   flowerIMG = loadImage("flower.png");
-//   beeIMG = loadImage("bee.png");
-//   beehiveIMG = loadImage("beehive.png");
-// }
-
-// function setup() {
-//   cellSize = height/GRID_SIZE;
-// }
-
-// function draw() {
-//   background(220);
-//   displayGrid();
-// }
-
-// function keyPressed() {
-//   // move up
-//   if (key === "w") {
-
-//   }
-//   // move left 
-//   if (key === "a") {
-
-//   }
-//   // move down
-//   if (key === "s") {
-
-//   }
-//   // move right
-//   if (key === "d") {
-
-//   }
-// }
-
-// function displayGrid() { // * figure out how to actually display the grid
-//   for (let y = 0; y < GRID_SIZE; y++) {
-//     for (let x = 0; x < GRID_SIZE; x++) {
-//       if (grid[y][x] === MUD_TILE) {
-//         image(dirtIMG, x*cellSize, y*cellSize, cellSize, cellSize);
-//       }
-//       else if (grid[y][x] === GRASS_TILE) {
-//         image(grassIMG, x*cellSize, y*cellSize, cellSize, cellSize);
-//       }
-//     }
-//   }
-// }
