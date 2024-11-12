@@ -8,16 +8,16 @@
 
 // setting up grid for game
 let grid = [
-  [0, 0, 1, 1, 0, 0, 0, 0, 1, 1], 
+  [0, 0, 1, 1, 0, 3, 3, 0, 1, 1], 
   [1, 0, 0, 1, 0, 1, 0, 1, 0, 1], 
-  [0, 0, 0, 0, 0, 1, 0, 0, 0, 0],
-  [0, 1, 1, 1, 1, 1, 0, 1, 1, 0], 
-  [0, 1, 1, 0, 0, 1, 0, 0, 0, 0], 
-  [0, 0, 0, 0, 0, 0, 0, 1, 0, 1],
+  [0, 3, 3, 0, 0, 1, 3, 3, 0, 0],
+  [0, 1, 1, 1, 1, 1, 3, 1, 1, 0], 
+  [0, 1, 1, 0, 0, 1, 0, 0, 3, 3], 
+  [0, 0, 3, 0, 0, 3, 0, 1, 0, 1],
   [1, 1, 0, 0, 1, 1, 0, 1, 0, 1],
-  [1, 0, 0, 1, 1, 0, 0, 0, 0, 1],
-  [0, 0, 0, 1, 0, 0, 1, 1, 0, 0],
-  [1, 1, 0, 0, 0, 1, 1, 1, 1, 2]
+  [1, 0, 0, 1, 1, 0, 0, 3, 3, 1],
+  [0, 3, 0, 1, 0, 0, 1, 1, 3, 0],
+  [1, 1, 0, 3, 3, 1, 1, 1, 1, 2]
 ];
 
 const GRID_ROWS = grid.length;
@@ -27,6 +27,7 @@ let grassIMG, dirtIMG, flowerIMG, beeIMG, beehiveIMG;
 const DIRT_TILE = 1; // mud tile (blocked tile)
 const GRASS_TILE = 0; // grass tile (open tile)
 const BEEHIVE_TILE = 2; // beehive tile (special tile)
+const FLOWER_TILE = 3; // flower tile (special tile)
 let player = {
   x: 0,
   y: 0,
@@ -75,31 +76,20 @@ function displayGrid() {
     for (let x = 0; x < GRID_COLUMNS; x++) {
       if (grid[y][x] === DIRT_TILE) {
         image(dirtIMG, x * cellSize, y * cellSize, cellSize, cellSize);  // DIRT_TILE is 1
-      } else if (grid[y][x] === GRASS_TILE) {
+      } 
+      else if (grid[y][x] === GRASS_TILE) {
         image(grassIMG, x * cellSize, y * cellSize, cellSize, cellSize);  // GRASS_TILE is 0
       } 
-    }
-  }
-
-  // // adding flowers on the tiles
-  // for (let y = 0; y < GRID_ROWS; y++) {
-  //    for (let x = 0; x < GRID_COLS; x++) {
-  //      // Place flowers randomly on top of some grass tiles
-  //      if (grid[y][x] === GRASS_TILE && random() > 0.8) {  // 20% chance to place a flower
-  //        image(flowerIMG, x * cellSize, y * cellSize, cellSize, cellSize);
-  //      }
-  //    }
-  //  }
-
-  // displaying the beehive on top of grass tile
-  for (let y = 0; y < GRID_ROWS; y++) {
-    for (let x = 0; x < GRID_COLUMNS; x++) {
-      if (grid[y][x] === BEEHIVE_TILE) {
+      else if (grid[y][x] === BEEHIVE_TILE) {
+        image(grassIMG, x * cellSize, y * cellSize, cellSize, cellSize);  // GRASS_TILE is 0
         image(beehiveIMG, x * cellSize, y * cellSize, cellSize, cellSize);  // BEEHIVE_TILE is 2
+      }
+      else if (grid[y][x] === FLOWER_TILE) {
+        image(grassIMG, x * cellSize, y * cellSize, cellSize, cellSize);  // GRASS_TILE is 0
+        image(flowerIMG, x * cellSize, y * cellSize, cellSize, cellSize);  // FLOWER_TILE is 3       
       }
     }
   }
-
 }
 
 function displayPlayer() {
