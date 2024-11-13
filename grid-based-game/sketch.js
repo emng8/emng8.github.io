@@ -49,6 +49,7 @@ function draw() {
   background(220);
   displayGrid();
   displayPlayer();
+  polinate();
 }
 
 function keyPressed() {
@@ -89,6 +90,12 @@ function displayGrid() {
         image(flowerIMG, x * cellSize, y * cellSize, cellSize, cellSize);  // FLOWER_TILE is 3       
       }
     }
+  }
+}
+
+function polinate() {
+  if (grid[player.y][player.x] === FLOWER_TILE) {
+    grid[player.y][player.x] = GRASS_TILE;
   }
 }
 
