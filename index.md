@@ -14,6 +14,7 @@
 - [Game of Life](game-of-life)
 - [Rectangle Grid](rectangle-grid)
 - [Walker OOP](walker-oop)
+- [Walker OOP Array](walker-oop-array)
 
 ## Projects
 - [Interactive Scene](interactive-scene)
