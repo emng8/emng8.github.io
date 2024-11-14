@@ -1,6 +1,6 @@
 // // Project Title
 // // Emily Ng
-// // November 8, 2024
+// // November 15, 2024
 // //
 // // Extra for Experts:
 // // - describe what you did to take this project "above and beyond"
@@ -102,3 +102,29 @@ function polinate() {
 function displayPlayer() {
   image(beeIMG, player.x * cellSize, player.y * cellSize, cellSize, cellSize); 
 }
+
+// function gameStage() {
+//   // show start screen
+//   if (stage === 0) {
+//     startScreen();  
+//   }
+
+//   // show game
+//   if (stage === 1) {
+//     beeGame();
+//   }
+
+//   // starting game
+//   if (mouseIsPressed === true) {
+//     stage = 1; 
+//   }
+// }
+
+// function beeGame() {
+// 
+// }
+
+// function completePolination() {
+//   if (grid != FLOWER_TILE && (player.x && player.y === grid[10][10]))
+//   let stage = 
+// }
