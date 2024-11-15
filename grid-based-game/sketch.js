@@ -54,16 +54,21 @@ let confettiGIF;
 let music;
 let musicPlayed = false;
 let soundEffect;
-let complete;
+let completeGame;
 
 function preload() {
+  // preload for images
   grassIMG = loadImage("grass.png");
   dirtIMG = loadImage("dirt.png");
   flowerIMG = loadImage("flower.png");
   beeIMG = loadImage("bee.png");
   beehiveIMG = loadImage("beehive.png");
+
+  // preload for GIFS
   confettiGIF = createImg('confetti.gif');
   confettiGIF.hide(); 
+
+  // preload for music and sound effects
   music = loadSound('music.mp3');
   soundEffect = loadSound('soundEffect.mp3');
   completeGame = loadSound('completeGame.mp3');
@@ -114,7 +119,7 @@ function gameStage() {
     stage = 1; 
   }
 
-  // ending game
+  // ending game with sound effect
   if (stage === 2) {
     endScreen();
     completeGame.play();
