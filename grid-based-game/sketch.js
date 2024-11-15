@@ -1,10 +1,13 @@
-// // Project Title
-// // Emily Ng
-// // November 15, 2024
-// //
-// // Extra for Experts:
-// // - describe what you did to take this project "above and beyond"
-// // making a game where the bee has to go polinate all the flowers and then has to find its way back to the beehive
+// Grid-Based Game - The Sweet Honey Dash
+// Emily Ng
+// November 15, 2024
+// 
+// Extra for Experts:
+// 1. createImg('confetti.gif') - The function loads the confetti GIF file into the game as an HTML image element.
+// 2. confettiGIF.size() & confettiGIF.position() - I used this to alter the position of the GIF.
+// 3. confettiGIF.show() & confettiGIF.hide() - I had to use these functions because GIFS are not static like regular images, meaning that these functions are necessary to control its visability.
+// 4. loadSound('music.mp3') - I used this to preload the music. I then  used music.loop() to start playing the music.
+// 5. musicPlayed = true & musicPlayer = true - I had to use this to  ensures that the music does not accidentally restart every time the frame updates.
 
 // grid characteristics
 let grid = [
@@ -24,9 +27,9 @@ const GRID_ROWS = grid.length;
 const GRID_COLUMNS = grid[0].length; 
 const cellSize = 50;
 
-let grassIMG, dirtIMG, flowerIMG, beeIMG, beehiveIMG, borderIMG;
-const DIRT_TILE = 1; 
+let grassIMG, dirtIMG, flowerIMG, beeIMG, beehiveIMG, borderIMG; 
 const GRASS_TILE = 0; 
+const DIRT_TILE = 1;
 const BEEHIVE_TILE = 2; 
 const FLOWER_TILE = 3; 
 
@@ -56,13 +59,13 @@ function preload() {
   flowerIMG = loadImage("flower.png");
   beeIMG = loadImage("bee.png");
   beehiveIMG = loadImage("beehive.png");
-  confettiGIF = createImg('confetti.gif');  // Make sure the path to your confetti GIF is correct
+  confettiGIF = createImg('confetti.gif');
   confettiGIF.hide(); 
   music = loadSound('music.mp3');
 }
 
 function setup() {
-  createCanvas(500, 500); 
+  createCanvas(500, 500);
 }
 
 function draw() {
@@ -177,8 +180,6 @@ function endScreen(){
 }
 
 function keyPressed() {
-  // controls for the bee
-
   // move up
   if (key === "w" && player.y > 0 && grid[player.y - 1][player.x] !== DIRT_TILE) {
     player.y--;
