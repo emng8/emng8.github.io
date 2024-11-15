@@ -23,7 +23,7 @@ let grid = [
 const GRID_ROWS = grid.length;
 const GRID_COLUMNS = grid[0].length; 
 const cellSize = 50;
-let grassIMG, dirtIMG, flowerIMG, beeIMG, beehiveIMG;
+let grassIMG, dirtIMG, flowerIMG, beeIMG, beehiveIMG, borderIMG;
 const DIRT_TILE = 1; // mud tile (blocked tile)
 const GRASS_TILE = 0; // grass tile (open tile)
 const BEEHIVE_TILE = 2; // beehive tile (special tile)
@@ -39,6 +39,7 @@ function preload() {
   flowerIMG = loadImage("flower.png");
   beeIMG = loadImage("bee.png");
   beehiveIMG = loadImage("beehive.png");
+  borderIMG = loadIMage("border.png")
 }
 
 function setup() {
@@ -103,22 +104,71 @@ function displayPlayer() {
   image(beeIMG, player.x * cellSize, player.y * cellSize, cellSize, cellSize); 
 }
 
-// function gameStage() {
-//   // show start screen
-//   if (stage === 0) {
-//     startScreen();  
-//   }
+function startScreen(){
+  background(255, 239, 143);
+  textSize(40);
+  text('🍯🍯🍯🍯🍯🍯🍯🍯🍯', 250, 10);
+  text('🍯🍯🍯🍯🍯🍯🍯🍯🍯', 250, 450);
 
-//   // show game
-//   if (stage === 1) {
-//     beeGame();
-//   }
+  textSize(50);
+  text('🐝', 100, 305);
+  text('🐝', 400, 305);
 
-//   // starting game
-//   if (mouseIsPressed === true) {
-//     stage = 1; 
-//   }
-// }
+  fill(250, 185, 7); 
+  textSize(60); 
+  textStyle(BOLD);
+  textAlign(CENTER, CENTER);
+  text('THE SWEET', width / 2, 150);
+  text('HONEY DASH', width / 2, 220);
+
+  fill(115, 81, 2);  
+  textSize(15);
+  textStyle(BOLD);
+  textAlign(CENTER, TOP);
+  text('Pollinate all the flowers and reach the beehive to complete the game!', width / 2, 270);
+  text('USE WASD TO MOVE THE BEE', width / 2, 320);
+
+  fill(171, 126, 2)
+  textSize(30);
+  textStyle(BOLD);
+  text('CLICK TO START THE GAME', width / 2, 375);  
+}
+
+function beeGame(){
+  displayGrid();
+  displayPlayer();
+  polinate();
+}
+
+function endScreen(){
+  background(255, 239, 143);
+  textSize(40);
+  text('🍯🍯🍯🍯🍯🍯🍯🍯🍯', 250, 10);
+  text('🍯🍯🍯🍯🍯🍯🍯🍯🍯', 250, 450);
+
+  
+}
+
+function gameStage() {
+  // show start screen
+  if (stage === 0) {
+    startScreen();  
+  }
+
+  // show game
+  if (stage === 1) {
+    beeGame();
+  }
+
+  // starting game
+  if (mouseIsPressed === true) {
+    stage = 1; 
+  }
+
+  if (stage === 2) {
+    endScreen();
+  }
+}
 
 // function beeGame() {
 // 
