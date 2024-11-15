@@ -6,7 +6,7 @@
 // 1. createImg('confetti.gif') - The function loads the confetti GIF file into the game as an HTML image element.
 // 2. confettiGIF.size() & confettiGIF.position() - I used this to alter the position of the GIF.
 // 3. confettiGIF.show() & confettiGIF.hide() - I had to use these functions because GIFS are not static like regular images, meaning that these functions are necessary to control its visability.
-// 4. loadSound('music.mp3') - I used this to preload the music. I then  used music.loop() to start playing the music.
+// 4. loadSound('music.mp3') - I used this to preload the music. I then used music.loop() to start playing the music.
 // 5. musicPlayed = true & musicPlayer = true - I had to use this to  ensures that the music does not accidentally restart every time the frame updates.
 
 // grid characteristics
@@ -46,7 +46,7 @@ let stage = 0;
 let flowersCollected = 0; 
 const totalFlowers = 17; 
 
-// variable for gif
+// variable for GIF
 let confettiGIF;
 
 // variable for music
@@ -145,7 +145,7 @@ function startScreen(){
 }
 
 function endScreen(){
-  // end screen text if the bee collects all the flowers and is at the beehive
+  // end screen text and pictures
   confettiGIF.size(500, 500);
   confettiGIF.position(width / 2 - confettiGIF.width / 2, height / 2 - confettiGIF.height / 2);
   confettiGIF.show();
@@ -240,6 +240,7 @@ function polinate() {
 
   // checks if all flowers are collected and the bee is on the beehive
   if (flowersCollected === totalFlowers && grid[player.y][player.x] === BEEHIVE_TILE) {
+    // if true, switches to end screen
     stage = 2;
   }
 }
