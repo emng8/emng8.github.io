@@ -124,20 +124,20 @@ function startScreen(){
   textSize(60); 
   textStyle(BOLD);
   textAlign(CENTER, CENTER);
-  text('THE SWEET', width / 2, 150);
-  text('HONEY DASH', width / 2, 220);
+  text('THE SWEET', 250, 150);
+  text('HONEY DASH', 250, 220);
 
   fill(115, 81, 2);  
   textSize(15);
   textStyle(BOLD);
   textAlign(CENTER, TOP);
   text('Pollinate all the flowers and reach the beehive to complete the game!', width / 2, 270);
-  text('USE WASD TO MOVE THE BEE', width / 2, 320);
+  text('USE WASD TO MOVE THE BEE', 250, 320);
 
   fill(171, 126, 2)
   textSize(30);
   textStyle(BOLD);
-  text('CLICK TO START THE GAME', width / 2, 375);  
+  text('CLICK TO START THE GAME', 250, 375);  
 }
 
 function beeGame(){
@@ -152,7 +152,23 @@ function endScreen(){
   text('🍯🍯🍯🍯🍯🍯🍯🍯🍯', 250, 10);
   text('🍯🍯🍯🍯🍯🍯🍯🍯🍯', 250, 450);
 
-  
+  fill(255, 161, 211);
+  textSize(30);
+  textStyle(BOLD);
+  text('🎉🐝 CONGRATULATIONS 🐝🎉', 250, 100);
+
+  fill(115, 81, 2);
+  textSize(18);
+  text('You have worked hard, buzzing from flower to flower,', 250, 170);
+  text('bringing life to the garden and ensuring that', 250, 200);
+  text('the sweetest of all treats, honey, will flow', 250, 230);
+  text('for all the bees in the hive! 🌸', 250, 260);
+
+  fill(180, 169, 252);
+  textSize(16);
+  text('Thanks to your diligent pollination, the hive is now ready', 250, 320);
+  text('for its next big adventure. Your efforts have made the', 250, 350);
+  text('world bloom brighter and sweeter!', 250, 380);
 }
 
 function gameStage() {
@@ -175,13 +191,3 @@ function gameStage() {
     endScreen();
   }
 }
-
-// function beeGame() {
-// 
-// }
-
-// function completePolination() {
-//   let counter = 0;
-//   if (grid != FLOWER_TILE && (player.x && player.y === grid[10][10]))
-//   let stage = 
-// }
