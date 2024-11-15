@@ -8,6 +8,7 @@
 // 3. confettiGIF.show() & confettiGIF.hide() - I had to use these functions because GIFS are not static like regular images, meaning that these functions are necessary to control its visability.
 // 4. loadSound('music.mp3') - I used this to preload the music. I then used music.loop() to start playing the music.
 // 5. musicPlayed = true & musicPlayer = true - I had to use this to  ensures that the music does not accidentally restart every time the frame updates.
+// 6. music.amp() - I used this to change the sound of my background music so that the sound effect would be loud enough. 
 
 // grid characteristics
 let grid = [
@@ -49,9 +50,11 @@ const totalFlowers = 17;
 // variable for GIF
 let confettiGIF;
 
-// variable for music
+// variable for music and sound effects
 let music;
 let musicPlayed = false;
+let soundEffect;
+let complete;
 
 function preload() {
   grassIMG = loadImage("grass.png");
@@ -62,6 +65,8 @@ function preload() {
   confettiGIF = createImg('confetti.gif');
   confettiGIF.hide(); 
   music = loadSound('music.mp3');
+  soundEffect = loadSound('soundEffect.mp3');
+  completeGame = loadSound('completeGame.mp3');
 }
 
 function setup() {
@@ -94,6 +99,7 @@ function gameStage() {
 
   // plays music looped
   if (stage === 0 && !musicPlayed) {
+    music.amp(0.7);
     music.loop(); 
     musicPlayed = true;
   }
@@ -108,8 +114,10 @@ function gameStage() {
     stage = 1; 
   }
 
+  // ending game
   if (stage === 2) {
     endScreen();
+    completeGame.play();
   }
 }
 
@@ -183,21 +191,25 @@ function keyPressed() {
   // move up
   if (key === "w" && player.y > 0 && grid[player.y - 1][player.x] !== DIRT_TILE) {
     player.y--;
+    soundEffect.play();
   }
 
   // move left
   if (key === "a" && player.x > 0 && grid[player.y][player.x - 1] !== DIRT_TILE) {
     player.x--;
+    soundEffect.play();
   }
 
   // move down
   if (key === "s" && player.y < GRID_ROWS - 1 && grid[player.y + 1][player.x] !== DIRT_TILE) {
     player.y++;
+    soundEffect.play();
   }
 
   // move right
   if (key === "d" && player.x < GRID_COLUMNS - 1 && grid[player.y][player.x + 1] !== DIRT_TILE) {
     player.x++;
+    soundEffect.play();
   }
 }
 
