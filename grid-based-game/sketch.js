@@ -32,6 +32,9 @@ let player = {
   x: 0,
   y: 0,
 };
+let stage = 0;
+let flowersCollected = 0; // Track number of collected flowers
+const totalFlowers = 17; // Set total number of flowers
 
 function preload() {
   grassIMG = loadImage("grass.png");
@@ -47,10 +50,7 @@ function setup() {
 }
 
 function draw() {
-  background(220);
-  displayGrid();
-  displayPlayer();
-  polinate();
+  gameStage();
 }
 
 function keyPressed() {
@@ -97,6 +97,12 @@ function displayGrid() {
 function polinate() {
   if (grid[player.y][player.x] === FLOWER_TILE) {
     grid[player.y][player.x] = GRASS_TILE;
+    flowersCollected++; // Increment the flower counter
+}
+
+// Check if all flowers are collected and the bee is on the beehive
+  if (flowersCollected === totalFlowers && grid[player.y][player.x] === BEEHIVE_TILE) {
+    stage = 2; // Switch to stage 2
   }
 }
 
@@ -175,6 +181,7 @@ function gameStage() {
 // }
 
 // function completePolination() {
+//   let counter = 0;
 //   if (grid != FLOWER_TILE && (player.x && player.y === grid[10][10]))
 //   let stage = 
 // }
