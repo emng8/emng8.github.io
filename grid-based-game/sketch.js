@@ -46,6 +46,10 @@ const totalFlowers = 17;
 // variable for gif
 let confettiGIF;
 
+// variable for music
+let music;
+let musicPlayed = false;
+
 function preload() {
   grassIMG = loadImage("grass.png");
   dirtIMG = loadImage("dirt.png");
@@ -54,6 +58,7 @@ function preload() {
   beehiveIMG = loadImage("beehive.png");
   confettiGIF = createImg('confetti.gif');  // Make sure the path to your confetti GIF is correct
   confettiGIF.hide(); 
+  music = loadSound('music.mp3');
 }
 
 function setup() {
@@ -82,6 +87,12 @@ function gameStage() {
   if (stage === 0) {
     confettiGIF.hide();
     startScreen();  
+  }
+
+  // plays music looped
+  if (stage === 0 && !musicPlayed) {
+    music.loop(); 
+    musicPlayed = true;
   }
 
   // show game
