@@ -20,6 +20,7 @@
 - [Collide 2D](collide)
 - [Local Storage Demo](local-storage)
 - [Inheritance Demo](inheritance)
+- [Fractal Circle](fractal-circle)
 
 ## Projects
 - [Interactive Scene](interactive-scene)
